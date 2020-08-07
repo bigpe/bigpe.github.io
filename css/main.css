@@ -1,0 +1,26 @@
+.mainBlock {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+}
+html, body{
+    overflow-x: hidden;
+}
+.skills svg{
+    transition: all ease .5s;
+    transform: scale(1);
+}
+.skills svg:hover{
+    transition: all ease .5s;
+    transform: scale(1.2);
+}
+.photo{
+    background-image: url("https://sun9-33.userapi.com/c845017/v845017247/1c63bb/j35k6WX0Jqs.jpg");
+    background-size: cover;
+    background-position-x: -30px;
+    border: 3px solid #dee2e6;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%
+}
