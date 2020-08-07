@@ -13,62 +13,98 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
+    <script src="js/jQuery.js"></script>
     <script type="text/javascript">
-        Revealator.effects_padding = '-300';
+        Revealator.effects_padding = '0';
     </script>
 </head>
+<script>
+    $.ajax({
+        type: "GET",
+        url: "https://www.freelancer.com/api/projects/0.1/reviews/?limit=50&role=freelancer&to_users[]=46624288&project_details=true&contest_details=true&project_job_details=true&contest_job_details=true&project_deleted=false&webapp=1&compact=true&new_errors=true",
+        complete: function (data) {
+            let reviews = JSON.parse(data.responseText)['result']['reviews'];
+            let leBlock = document.getElementById("latestExperience");
+            for (let r in reviews){
+                let projectName = reviews[r]['review_context']['context_name'];
+                let projectURL = "https://freelancer.com/" + reviews[r]['review_context']['seo_url'];
+                let rating = reviews[r]['rating'];
+                let paid = reviews[r]['paid_amount'];
+                let currency = reviews[r]['currency']['sign'];
+                let description = reviews[r]['description'];
+                let revBlock = document.createElement("div");
+                let revTitle = document.createElement("div");
+                revTitle.setAttribute("class", "card-header bg-light text-dark shadow-lg rounded-0 font-weight-bold");
+                revTitle.innerHTML = "<a href='" + projectURL + "'>" + projectName + "</a>" + " " + rating
+                    + " <i class='fas fa-star text-warning'></i>"
+                    + " <span class='text-success'>" + paid + currency + "</span>";
+                let revBody = document.createElement("div");
+                revBody.setAttribute("class", "card-body bg-light text-secondary font-weight-bold");
+                revBody.innerHTML = description;
+                revBlock.append(revTitle, revBody);
+                leBlock.append(revBlock);
+            }
+            let l = leBlock.getAttribute("class").split("d-none")[1];
+            leBlock.setAttribute("class", l);
+        }
+    })
+</script>
 <body>
 <div class="mainBlock bg-light container-fluid px-0 min-vh-100 my-0">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-md-2 mx-0">
         <div class="leftBlock bg-light col col-auto px-0 mx-0">
-            <div class="leftUpBlock jumbotron text-center bg-dark text-light rounded-0 py-4 my-0 shadow-lg revealator-zoomout revealator-once">
-                <img class="photo d-flex justify-content-center m-auto revealator-slideright">
-                <h1 class="px-2 d-flex justify-content-center revealator-fade">Alexandr Sokolov</h1>
+            <div class="leftUpBlock jumbotron text-center bg-dark text-light rounded-0 py-4 my-0 shadow-lg revealator-zoomout revealator-load">
+                <img class="photo d-flex justify-content-center m-auto revealator-load revealator-slideright">
+                <h1 class="px-2 d-flex justify-content-center revealator-load revealator-fade">Alexandr Sokolov</h1>
                 <div class="row row-cols-1 d-flex justify-content-center">
                     <div class="col col-auto">
-                        <div class="revealator-delay1 d-inline-flex p-2 text-nowrap revealator-slideup">
+                        <div class="revealator-delay1 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup">
                             <i class="fas fa-house-user mr-2"></i>Russia, Moscow
                         </div>
-                        <div class="revealator-delay2 d-inline-flex p-2 text-nowrap revealator-slideup">
+                        <div class="revealator-delay2 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup">
                             <i class="fas fa-birthday-cake mr-2"></i>12 Feb. 1996
                         </div>
                     </div>
                     <div class="col col-auto">
-                        <div class="revealator-delay3 d-inline-flex p-2 text-nowrap revealator-slideup">
+                        <div class="revealator-delay3 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup">
                             <i class="fab fa-telegram-plane mr-2"></i><a href="https://t.me/bigpebro" target="_blank">@bigpebro</a>
                         </div>
-                        <div class="revealator-delay4 d-inline-flex p-2 text-nowrap revealator-slideup revealator-fade">
+                        <div class="revealator-delay4 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup revealator-fade">
                             <i class="fas fa-envelope mr-2"></i><a href="mailto:bigpewm@gmail.com?subject=About Cooperation" target="_blank">bigpewm@gmail.com</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="leftBottomBlock py-3 text-center jumbotron bg-light rounded-0 my-0 pt-2 pb-0 text-dark revealator-slideup revealator-once">
+            <div class="leftBottomBlock py-3 text-center jumbotron bg-light rounded-0 my-0 pt-2 pb-0 text-dark revealator-load">
                 <div class="row justify-content-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
-                    <div class="col col-auto revealator-zoomin revealator-delay4">
-                        <h3 class="font-weight-bold py-0">Languages</h3>
-                        <h5 class="py-0 my-0">Russian <span class="text-success font-weight-bold">Native</span></h5>
-                        <span class="d-table m-auto text-warning text-nowrap">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </span>
-                        <h5 class="py-0 my-0">English <span class="text-warning font-weight-bold">B1</span></h5>
-                        <span class="d-table m-auto text-warning text-nowrap">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </span>
+                    <div class="col col-auto revealator-zoomin revealator-delay4 revealator-once">
+                        <div class="revealator-zoomout revealator-delay4 revealator-once">
+                            <h3 class="font-weight-bold py-0">Languages</h3>
+                            <h5 class="py-0 my-0">Russian <span class="text-success font-weight-bold">Native</span></h5>
+                            <span class="d-table m-auto text-warning text-nowrap">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <div class="revealator-zoomout revealator-delay5 revealator-once">
+                            <h5 class="py-0 my-0">English <span class="text-warning font-weight-bold">B1</span></h5>
+                            <span class="d-table m-auto text-warning text-nowrap">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                        </div>
                     </div>
-                    <div class="skills col col-auto">
+                    <div class="skills col col-auto revealator-zoomin revealator-delay4 revealator-once">
                         <h3 class="font-weight-bold py-0">Skills</h3>
-                        <div style="font-size: 2rem">
+                        <div class="skillsIcons">
                             <div class="row row-cols-1 justify-content-center">
-                                <div class="col col-auto revealator-zoomout revealator-delay2">
+                                <div class="col col-auto revealator-zoomout revealator-delay4 revealator-once">
                                     <i class="fab fa-js-square text-warning"></i>
                                     <i class="fab fa-node-js text-warning"></i>
                                     <i class="fab fa-react text-info"></i>
@@ -76,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="row row-cols-1 justify-content-center">
-                                <div class="col col-auto revealator-zoomout revealator-delay3">
+                                <div class="col col-auto revealator-zoomout revealator-delay5 revealator-once">
                                     <i class="fab fa-python text-info"></i>
                                     <i class="fab fa-php" style="color: purple"></i>
                                     <i class="fab fa-css3-alt text-danger"></i>
@@ -84,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="row row-cols-1 justify-content-center">
-                                <div class="col col-auto revealator-zoomout revealator-delay4">
+                                <div class="col col-auto revealator-zoomout revealator-delay6 revealator-once">
                                     <i class="fab fa-java text-info"></i>
                                     <i class="fab fa-bootstrap" style="color: purple"></i>
                                     <i class="fas fa-copyright text-info"></i>
@@ -92,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="row row-cols-1 justify-content-center">
-                                <div class="col col-auto revealator-zoomout revealator-delay5">
+                                <div class="col col-auto revealator-zoomout revealator-delay7 revealator-once">
                                     <i class="fab fa-wordpress text-info"></i>
                                     <i class="fab fa-joomla text-success"></i>
                                     <i class="fab fa-docker text-info"></i>
@@ -104,24 +140,13 @@
                 </div>
             </div>
         </div>
-        <div class="rightBlock min-vh-100 d-flex col col-auto px-0 mx-0 text-dark revealator-slideleft revealator-once revealator-delay2">
-            <div class="rightBlock jumbotron bg-light shadow-lg rounded-0 my-0">
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second BlockSecond Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
-                Second Block
+        <div class="rightBlock min-vh-100 d-flex col col-auto px-0 mx-0 text-dark revealator-slideleft revealator-load revealator-delay2">
+            <div class="my-0 py-3 jumbotron bg-light text-light shadow-lg rounded-0 my-0">
+                <div id="latestExperience" class="d-none shadow-lg">
+                    <div class="card-header bg-dark d-flex rounded-top">
+                        Latest Experience-<a href="https://www.freelancer.com.ru/u/bigpebro"><span class="font-weight-bold">Freelancer.com</span></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

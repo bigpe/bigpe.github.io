@@ -15,6 +15,9 @@ html, body{
     transition: all ease .5s;
     transform: scale(1.2);
 }
+.skillsIcons{
+    font-size: 2rem;
+}
 .photo{
     background-image: url("https://sun9-33.userapi.com/c845017/v845017247/1c63bb/j35k6WX0Jqs.jpg");
     background-size: cover;
