@@ -41,7 +41,7 @@
                     + " <i class='fas fa-star text-warning'></i>"
                     + " <span class='text-success'>" + paid + currency + "</span>";
                 let revBody = document.createElement("div");
-                revBody.setAttribute("class", "card-body bg-light small text-secondary font-weight-bold");
+                revBody.setAttribute("class", "border-bottom card-body bg-light small text-secondary font-weight-bold");
                 revBody.innerHTML = description;
                 revBlock.append(revTitle, revBody);
                 leBlock.append(revBlock);
@@ -52,7 +52,7 @@
     })
 </script>
 <body>
-<div class="mainBlock bg-light container-fluid px-0 min-vh-100 my-0 text-">
+<div class="mainBlock bg-light container-fluid px-0 min-vh-100 my-0">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-md-2 mx-0">
         <div class="leftBlock min-vh-100 bg-light col col-auto px-0 mx-0">
             <div class="leftUpBlock jumbotron text-center bg-dark text-light rounded-0 py-4 my-0 shadow-lg revealator-zoomout revealator-load">
@@ -144,13 +144,13 @@
 
             </div>
         </div>
-        <div class="rightBlock min-vh-100 d-flex col col-auto px-0 mx-0 text-dark revealator-slideleft revealator-load revealator-delay2">
-            <div class="my-0 py-3 jumbotron bg-light text-light shadow-lg rounded-0 my-0">
+        <div class="rightBlock h-100 col col-auto px-0 text-dark revealator-slideleft revealator-load revealator-delay2">
+            <div class="my-0 py-3 jumbotron bg-light text-light rounded-0">
                 <div id="about" class="shadow-lg revealator-zoomout revealator-delay3 text-light text-left revealator-load overflow-hidden">
                     <div class="card-header bg-dark rounded-top"><i class="fas fa-user"></i> About Me</div>
-                    <div class="card-header font-weight-bold text-warning revealator-slideleft revealator-delay5">Experience 2 years</div>
-                    <div class="card-header font-weight-bold text-success revealator-slideleft revealator-delay6">Fast learning</div>
-                    <div class="card-body text-secondary revealator-slideleft revealator-delay7 pb-0">
+                    <div class="card-header font-weight-bold text-warning revealator-slideleft revealator-delay5"><i class="fas fa-check"></i> Experience 2 years</div>
+                    <div class="card-header font-weight-bold text-success revealator-slideleft revealator-delay6"><i class="fas fa-check"></i> Fast learning</div>
+                    <div class="card-body text-secondary revealator-slideleft revealator-delay5 pb-0">
                         I <mark>mainly</mark> work with <mark>Python, JS, PHP, C++</mark>,
                         but I have good knowledge and <mark>experience with other languages and</mark>
                         <mark><span class="text-nowrap">frameworks</span> ​​:)</mark>
@@ -174,7 +174,7 @@
                         Apr. 2019 - Present Day
                     </div>
                 </div>
-                <div id="hobbies" class="shadow-lg revealator-fade revealator-delay3">
+                <div id="hobbies" class="shadow-lg revealator-fade revealator-delay3 overflow-hidden">
                     <div class="card-header bg-dark rounded-top mt-3"><i class="fas fa-dice"></i> Hobbies</div>
                     <div class="card-header bg-white d-flex revealator-fade revealator-delay5">
                         <div class="card-body text-warning d-flex justify-content-center text-secondary revealator-zoomout revealator-delay6">
@@ -189,6 +189,15 @@
                         <div class="card-body text-info d-flex justify-content-center text-secondary revealator-zoomout revealator-delay8">
                             <i class="fas fa-laptop-code"></i>
                         </div>
+                    </div>
+                </div>
+                <div id="addition" class="shadow-lg revealator-fade revealator-delay5">
+                    <div class="card-header bg-success rounded-top mt-3"><i class="fas fa-info-circle"></i> Addition</div>
+                    <div class="card-body small text-secondary revealator-slideleft revealator-delay6">
+                        <span class="d-block">Development is my job.</span>
+                        <span class="d-block">Development is my hobby.</span>
+                        <span class="d-block">If you have cool projects, I am with you!</span>
+                        <span class="d-block">Thank you for visiting, maybe <span class="text-nowrap">see you soon :)</span></span>
                     </div>
                 </div>
             </div>
