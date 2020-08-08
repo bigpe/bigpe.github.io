@@ -7,16 +7,19 @@
 html, body{
     overflow-x: hidden;
 }
-.skills svg{
+.skills svg, #hobbies svg{
     transition: all ease .5s;
     transform: scale(1);
 }
-.skills svg:hover{
+.skills svg:hover, #hobbies .card-body svg:hover{
     transition: all ease .5s;
     transform: scale(1.2);
 }
 .skillsIcons{
-    font-size: 2rem;
+    font-size: 1.6rem;
+}
+#hobbies .card-body svg{
+    font-size: 1.5rem;
 }
 .photo{
     background-image: url("https://sun9-33.userapi.com/c845017/v845017247/1c63bb/j35k6WX0Jqs.jpg");
