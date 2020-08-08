@@ -22,9 +22,10 @@ html, body{
     font-size: 1.5rem;
 }
 .photo{
-    background-image: url("https://sun9-33.userapi.com/c845017/v845017247/1c63bb/j35k6WX0Jqs.jpg");
+    background-image: url('https://cdn6.f-cdn.com/ppic/157162918/logo/46624288/vDk6j/profile_logo_KYLIK_ecebbecf28c2692aeb021597fbddb174.jpg'););
     background-size: cover;
-    background-position-x: -30px;
+    background-position-x: 5px;
+    background-position-y: 0px;
     border: 3px solid #dee2e6;
     height: 150px;
     width: 150px;
