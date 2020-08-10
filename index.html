@@ -55,6 +55,7 @@
         let cssStyles = document.getElementsByTagName("link");
         let cssDump = null;
         let pdfBtn = document.getElementsByClassName("pdfBtn")[0];
+        pdfBtn.onclick = function(){return};
         let textDump = null;
         for (let i = 0; i < cssStyles.length; i++){
             if(cssStyles[i].href && cssStyles[i].href.includes("fm.revealator.jquery.css")) {
@@ -65,31 +66,37 @@
         let sizeDump =  document.documentElement.style.width;
         document.documentElement.style.width = "1350px";
         document.getElementsByClassName("pdfBtn")[0].style.visibility = "hidden";
+        let data = {
+            "html": new XMLSerializer().serializeToString(document),
+            "method": "1",
+            "pageOrientation": "Portrait",
+            "pageWidth": window.innerWidth,
+            "singlePage": "False",
+            "targetUrl": window.location.href,
+            "dateTime": Date.now()
+        };
         $.ajax({
             url: "https://pdfmage.org/api/process",
             method: "POST",
-            data: {
-                "html": new XMLSerializer().serializeToString(document),
-                "method": "1",
-                "pageOrientation": "Portrait",
-                "pageWidth": window.innerWidth,
-                "singlePage": "False",
-                "targetUrl": window.location.href,
-                "dateTime": Date.now()
-            },
+            data: data,
+            dataType: "json",
             beforeSend: function(){
                 document.documentElement.style.width = sizeDump;
                 document.getElementsByClassName("pdfBtn")[0].style.visibility = "visible";
                 textDump = pdfBtn.innerHTML;
                 pdfBtn.innerHTML = "<span class=\"text-danger spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
             },
-            complete: function (d) {
-                if(d.status == 200){
-                    pdfBtn.innerHTML = textDump;
-                    location.href = JSON.parse(d.responseText)['Data']['DownloadUrl'];
-                }
+            success: function (d) {
+                pdfBtn.innerHTML = "<a href='" + d['Data']['DownloadUrl']  + "' target='_blank'>" +
+                    "<i class=\"fas text-white fa-arrow-alt-circle-down\"></i></a>";
                 if(cssDump)
                     document.getElementsByTagName("head")[0].append(cssDump); //Restore Dumped CSS
+            },
+            complete: function () {
+                pdfBtn.onclick = function () {
+                    pdfBtn.innerHTML = textDump;
+                    pdfBtn.onclick = function (){pdfDump()};
+                }
             }
         })
     }
