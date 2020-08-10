@@ -62,28 +62,31 @@
                 cssStyles[i].remove();
             }
         }
+        let sizeDump =  document.documentElement.style.width;
+        document.documentElement.style.width = "1350px";
+        document.getElementsByClassName("pdfBtn")[0].style.visibility = "hidden";
         $.ajax({
             url: "https://pdfmage.org/api/process",
             method: "POST",
             data: {
-                "html": document.documentElement.outerHTML,
+                "html": new XMLSerializer().serializeToString(document),
                 "method": "1",
                 "pageOrientation": "Portrait",
-                "pageWidth": document.documentElement.clientWidth,
+                "pageWidth": window.innerWidth,
                 "singlePage": "False",
                 "targetUrl": window.location.href,
                 "dateTime": Date.now()
             },
             beforeSend: function(){
+                document.documentElement.style.width = sizeDump;
+                document.getElementsByClassName("pdfBtn")[0].style.visibility = "visible";
                 textDump = pdfBtn.innerHTML;
                 pdfBtn.innerHTML = "<span class=\"text-danger spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
             },
             complete: function (d) {
                 if(d.status == 200){
                     pdfBtn.innerHTML = textDump;
-                    $(".pdfBtn").addClass("text-success");
-                    let url = JSON.parse(d.responseText)['Data']['DownloadUrl'];
-                    location.href = url;
+                    location.href = JSON.parse(d.responseText)['Data']['DownloadUrl'];
                 }
                 if(cssDump)
                     document.getElementsByTagName("head")[0].append(cssDump); //Restore Dumped CSS
@@ -108,12 +111,12 @@
                 <div class="ghBlock revealator-fade revealator-once revealator-delay1 position-absolute">
                     <div class="angleBlock"></div>
                     <a href="https://github.com/bigpe">
-                <span class="text-dark">
+                <span class="text-light">
                     <i class="fab fa-github"></i>
                 </span>
                     </a>
                 </div>
-                <div class="pdfBtn text-danger revealator-fade revealator-once revealator-delay4" onclick="pdfDump()">
+                <div class="pdfBtn text-light revealator-fade revealator-once revealator-delay4" onclick="pdfDump()">
                     <i class="fas fa-file-pdf"></i>
                 </div>
             </div>
