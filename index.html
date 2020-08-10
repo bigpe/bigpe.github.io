@@ -82,7 +82,7 @@
                 if(d.status == 200){
                     pdfBtn.innerHTML = textDump;
                     $(".pdfBtn").addClass("text-success");
-                    let url = JSON.parse(d.responseText)['data']['DownloadUrl'];
+                    let url = JSON.parse(d.responseText)['Data']['DownloadUrl'];
                     location.href = url;
                 }
                 if(cssDump)
