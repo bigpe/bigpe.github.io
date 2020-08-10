@@ -63,11 +63,13 @@
                 cssStyles[i].remove();
             }
         }
-        let sizeDump =  document.documentElement.style.width;
+        let sizeDump = document.documentElement.style.width;
         document.documentElement.style.width = "1350px";
+        let htmlDump = new XMLSerializer().serializeToString(document);
         document.getElementsByClassName("pdfBtn")[0].style.visibility = "hidden";
+        document.documentElement.style.width = sizeDump;
         let data = {
-            "html": new XMLSerializer().serializeToString(document),
+            "html": htmlDump,
             "method": "1",
             "pageOrientation": "Portrait",
             "pageWidth": window.innerWidth,
@@ -81,7 +83,6 @@
             data: data,
             dataType: "json",
             beforeSend: function(){
-                document.documentElement.style.width = sizeDump;
                 document.getElementsByClassName("pdfBtn")[0].style.visibility = "visible";
                 textDump = pdfBtn.innerHTML;
                 pdfBtn.innerHTML = "<span class=\"text-danger spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
