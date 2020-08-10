@@ -76,7 +76,7 @@
             },
             beforeSend: function(){
                 textDump = pdfBtn.innerHTML;
-                pdfBtn.innerHTML = "<span class=\"spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
+                pdfBtn.innerHTML = "<span class=\"text-danger spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
             },
             complete: function (d) {
                 if(d.status == 200){
