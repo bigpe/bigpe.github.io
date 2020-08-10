@@ -66,7 +66,7 @@
             url: "https://pdfmage.org/api/process",
             method: "POST",
             data: {
-                "html": document.all[0].innerHTML,
+                "html": document.documentElement.outerHTML,
                 "method": "1",
                 "pageOrientation": "Portrait",
                 "pageWidth": document.documentElement.clientWidth,
@@ -113,7 +113,7 @@
                 </span>
                     </a>
                 </div>
-                <div class="pdfBtn text-light revealator-fade revealator-once revealator-delay4" onclick="pdfDump()">
+                <div class="pdfBtn text-danger revealator-fade revealator-once revealator-delay4" onclick="pdfDump()">
                     <i class="fas fa-file-pdf"></i>
                 </div>
             </div>
