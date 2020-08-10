@@ -54,6 +54,8 @@
     function pdfDump() {
         let cssStyles = document.getElementsByTagName("link");
         let cssDump = null;
+        let pdfBtn = document.getElementsByClassName("pdfBtn")[0];
+        let textDump = null;
         for (let i = 0; i < cssStyles.length; i++){
             if(cssStyles[i].href && cssStyles[i].href.includes("fm.revealator.jquery.css")) {
                 cssDump = cssStyles[i].cloneNode();
@@ -72,9 +74,15 @@
                 "targetUrl": window.location.href,
                 "dateTime": Date.now()
             },
+            beforeSend: function(){
+                textDump = pdfBtn.innerHTML;
+                pdfBtn.innerHTML = "<span class=\"spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
+            },
             complete: function (d) {
                 if(d.status == 200){
-                    let url = d.responseJSON['data']['DownloadUrl'];
+                    pdfBtn.innerHTML = textDump;
+                    $(".pdfBtn").addClass("text-success");
+                    let url = JSON.parse(d.responseText)['data']['DownloadUrl'];
                     location.href = url;
                 }
                 if(cssDump)
