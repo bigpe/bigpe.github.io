@@ -68,14 +68,17 @@
                 "method": "1",
                 "pageOrientation": "Portrait",
                 "pageWidth": document.documentElement.clientWidth,
-                "singlePage": "True",
+                "singlePage": "False",
                 "targetUrl": window.location.href,
                 "dateTime": Date.now()
             },
             complete: function (d) {
-                console.log(d.responseText);
+                if(d.status == 200){
+                    let url = d.responseJSON['data']['DownloadUrl'];
+                    location.href = url;
+                }
                 if(cssDump)
-                    document.getElementsByTagName("head")[0].append(cssDump);
+                    document.getElementsByTagName("head")[0].append(cssDump); //Restore Dumped CSS
             }
         })
     }
