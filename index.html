@@ -65,8 +65,8 @@
         }
         let sizeDump = document.documentElement.style.width;
         document.documentElement.style.width = "1350px";
-        let htmlDump = new XMLSerializer().serializeToString(document);
         document.getElementsByClassName("pdfBtn")[0].style.visibility = "hidden";
+        let htmlDump = new XMLSerializer().serializeToString(document);
         document.documentElement.style.width = sizeDump;
         let data = {
             "html": htmlDump,
