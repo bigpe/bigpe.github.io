@@ -7,11 +7,11 @@
 html, body{
     overflow-x: hidden;
 }
-.skills svg, #hobbies svg{
+.skills svg, #hobbies svg, .ghBlock svg, .pdfBtn svg{
     transition: all ease .5s;
     transform: scale(1);
 }
-.skills svg:hover, #hobbies .card-body svg:hover{
+.skills svg:hover, #hobbies .card-body svg:hover, .ghBlock svg:hover, .pdfBtn svg:hover{
     transition: all ease .5s;
     transform: scale(1.2);
 }
@@ -30,4 +30,31 @@ html, body{
     height: 150px;
     width: 150px;
     border-radius: 100%
+}
+.pdfBtn{
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    top: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.angleBlock {
+    border-style: inset;
+    border-width: 80px 80px 0 0;
+    border-color: #343a40 transparent  transparent  transparent;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.ghBlock span{
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    font-size: 2rem;
+    left: 10px;
+}
+.ghBlock{
+    z-index: 1;
 }
