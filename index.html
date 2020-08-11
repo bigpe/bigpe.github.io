@@ -36,7 +36,7 @@
                     let revBlock = document.createElement("div");
                     revBlock.setAttribute("class", "revealator-slideright revealator-partially-above revealator-once revealator-delay" + d++);
                     let revTitle = document.createElement("div");
-                    revTitle.setAttribute("class", "card-header bg-light text-dark shadow-lg rounded-0 font-weight-bold");
+                    revTitle.setAttribute("class", "card-header bg-light text-dark shadow-sm rounded-0 font-weight-bold");
                     revTitle.innerHTML = "<a href='" + projectURL + "' target='_blank'>" + projectName + "</a>" + " " + rating
                         + " <i class='fas fa-star text-warning'></i>"
                         + " <span class='text-success'>" + paid + currency + "</span>";
@@ -67,6 +67,8 @@
         document.documentElement.style.width = "1350px";
         document.getElementsByClassName("pdfBtn")[0].style.visibility = "hidden";
         let htmlDump = new XMLSerializer().serializeToString(document);
+        if(cssDump)
+            document.getElementsByTagName("head")[0].append(cssDump); //Restore Dumped CSS
         document.documentElement.style.width = sizeDump;
         let data = {
             "html": htmlDump,
@@ -90,8 +92,6 @@
             success: function (d) {
                 pdfBtn.innerHTML = "<a href='" + d['Data']['DownloadUrl']  + "' target='_blank'>" +
                     "<i class=\"fas text-white fa-arrow-alt-circle-down\"></i></a>";
-                if(cssDump)
-                    document.getElementsByTagName("head")[0].append(cssDump); //Restore Dumped CSS
             },
             complete: function () {
                 pdfBtn.onclick = function () {
@@ -112,9 +112,9 @@
     gtag('config', 'UA-174990845-1');
 </script>
 <body>
-<div class="mainBlock bg-light container-fluid px-0 min-vh-100 my-0">
+<div class="mainBlock bg-white container-fluid px-0 min-vh-100 mt-0 mb-5">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-md-2 mx-0">
-        <div class="leftBlock min-vh-100 bg-light col col-auto px-0 mx-0">
+        <div class="leftBlock min-vh-100 bg-white col col-auto px-0 mx-0 border-right border-light">
             <div class="topMenu">
                 <div class="ghBlock revealator-fade revealator-once revealator-delay1 position-absolute">
                     <div class="angleBlock"></div>
@@ -128,7 +128,7 @@
                     <i class="fas fa-file-pdf"></i>
                 </div>
             </div>
-            <div class="leftUpBlock jumbotron text-center bg-dark text-light rounded-0 py-4 my-0 shadow-lg revealator-zoomout revealator-load">
+            <div class="leftUpBlock jumbotron text-center bg-dark text-light rounded-0 py-4 my-0 revealator-zoomout revealator-load">
                 <img class="shadow-lg photo m-auto revealator-load revealator-slideright">
                 <h1 class="px-2 d-flex justify-content-center revealator-load revealator-fade">Alexandr Sokolov</h1>
                 <p class="my-0 small text-success font-weight-bold revealator-zoomout px-2 d-flex justify-content-center revealator-load revealator-fade">Full Stack Web Developer</p>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            <div class="leftBottomBlock py-3 text-center jumbotron bg-light rounded-0 my-0 pt-2 pb-0 text-dark revealator-load">
+            <div class="leftBottomBlock py-3 text-center jumbotron bg-white rounded-0 my-0 pt-2 pb-0 text-dark revealator-load">
                 <div class="row justify-content-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
                     <div class="revealator-once col col-auto revealator-zoomin revealator-delay4">
                         <div class="revealator-once revealator-zoomout revealator-delay4">
@@ -219,7 +219,7 @@
             </div>
         </div>
         <div class="rightBlock h-100 col col-auto px-0 text-dark revealator-slideleft revealator-load revealator-delay2">
-            <div class="my-0 py-3 jumbotron bg-light text-light rounded-0">
+            <div class="my-0 py-3 jumbotron bg-white text-light rounded-0">
                 <div id="about" class="shadow-lg revealator-zoomout revealator-delay3 text-light text-left revealator-load overflow-hidden">
                     <div class="card-header bg-dark rounded-top"><i class="fas fa-user"></i> About Me</div>
                     <div class="revealator-once card-header font-weight-bold text-warning revealator-slideleft revealator-delay5"><i class="fas fa-check"></i> Experience 2 years</div>
@@ -239,8 +239,8 @@
                         </ul>
                     </div>
                 </div>
-                <div id="education" class="revealator-once shadow-lg revealator-fade revealator-delay5">
-                    <div class="card-header bg-dark rounded-top mt-3"><i class="fas fa-graduation-cap"></i> Education</div>
+                <div id="education" class="revealator-once mt-3 shadow-lg revealator-fade revealator-delay5">
+                    <div class="card-header bg-dark rounded-top"><i class="fas fa-graduation-cap"></i> Education</div>
                     <div class="revealator-once card-header bg-white d-flex revealator-slideleft revealator-delay5">
                         <a href="https://21-school.ru/"><span class="font-weight-bold">School 21 (Ecole 42)</span></a>
                     </div>
@@ -248,18 +248,18 @@
                         Apr. 2019 - Present Day
                     </div>
                 </div>
-                <div id="hobbies" class="revealator-once shadow-lg revealator-fade revealator-delay3 overflow-hidden">
-                    <div class="card-header bg-dark rounded-top mt-3"><i class="fas fa-dice"></i> Hobbies</div>
-                    <div class="revealator-once card-header text-warning revealator-zoomout revealator-delay5">
+                <div id="hobbies" class="revealator-once mt-3 shadow-lg revealator-fade revealator-delay3 overflow-hidden">
+                    <div class="card-header bg-dark rounded-top"><i class="fas fa-dice"></i> Hobbies</div>
+                    <div class="revealator-once card-header bg-light text-warning revealator-zoomout revealator-delay5">
                         <i class="fas fa-gamepad"></i> Videogames
                     </div>
-                    <div class="revealator-once card-header text-danger revealator-zoomout revealator-delay6">
+                    <div class="revealator-once card-header bg-light text-danger revealator-zoomout revealator-delay6">
                         <i class="fas fa-music"></i> Music
                     </div>
-                    <div class="revealator-once card-header text-success revealator-zoomout revealator-delay7">
+                    <div class="revealator-once card-header bg-light text-success revealator-zoomout revealator-delay7">
                         <i class="fas fa-book"></i> Books
                     </div>
-                    <div class="revealator-once card-header text-info revealator-zoomout revealator-delay8">
+                    <div class="revealator-once card-header bg-light text-info revealator-zoomout revealator-delay8">
                         <i class="fas fa-laptop-code"></i> Development
                     </div>
                 </div>
