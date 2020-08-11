@@ -33,20 +33,26 @@ function loadFReviews() {
 }
 function pdfDump() {
     let cssStyles = document.getElementsByTagName("link");
-    let cssDump = null;
+    let cssDump, textDump, sizeDump;
     let pdfBtn = document.getElementsByClassName("pdfBtn")[0];
+    let linkBtn = document.getElementsByClassName("linkBtn")[0];
     pdfBtn.onclick = function(){return};
-    let textDump = null;
     for (let i = 0; i < cssStyles.length; i++){
         if(cssStyles[i].href && cssStyles[i].href.includes("fm.revealator.jquery.css")) {
             cssDump = cssStyles[i].cloneNode();
             cssStyles[i].remove();
         }
     }
-    let sizeDump = document.documentElement.style.width;
-    document.documentElement.style.width = "1350px";
-    document.getElementsByClassName("pdfBtn")[0].style.visibility = "hidden";
+    sizeDump = document.documentElement.style.width;
+    textDump = pdfBtn.innerHTML;
+    let optimalW = 840;
+    document.documentElement.style.width = optimalW + "px";
+    pdfBtn.style.visibility = "hidden";
+    linkBtn.style.display = "block";
     let htmlDump = new XMLSerializer().serializeToString(document);
+    pdfBtn.style.visibility = "visible";
+    linkBtn.style.display = "none";
+    pdfBtn.innerHTML = "<span class=\"text-danger spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
     if(cssDump)
         document.getElementsByTagName("head")[0].append(cssDump); //Restore Dumped CSS
     document.documentElement.style.width = sizeDump;
@@ -54,7 +60,7 @@ function pdfDump() {
         "html": htmlDump,
         "method": "1",
         "pageOrientation": "Portrait",
-        "pageWidth": window.innerWidth,
+        "pageWidth": optimalW,
         "singlePage": "False",
         "targetUrl": window.location.href,
         "dateTime": Date.now()
@@ -64,11 +70,6 @@ function pdfDump() {
         method: "POST",
         data: data,
         dataType: "json",
-        beforeSend: function(){
-            document.getElementsByClassName("pdfBtn")[0].style.visibility = "visible";
-            textDump = pdfBtn.innerHTML;
-            pdfBtn.innerHTML = "<span class=\"text-danger spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>";
-        },
         success: function (d) {
             pdfBtn.innerHTML = "<a href='" + d['Data']['DownloadUrl']  + "' target='_blank'>" +
                 "<i class=\"fas text-white fa-arrow-alt-circle-down\"></i></a>";

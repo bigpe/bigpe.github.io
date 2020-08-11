@@ -31,13 +31,16 @@ html, body{
     width: 150px;
     border-radius: 100%
 }
-.pdfBtn{
+.pdfBtn, .linkBtn{
     position: absolute;
     z-index: 1;
     right: 15px;
     top: 5px;
     font-size: 1.5rem;
     cursor: pointer;
+}
+.linkBtn{
+    display: none;
 }
 .angleBlock {
     border-style: inset;
