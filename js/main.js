@@ -56,7 +56,7 @@ function pdfDump() {
     }
     sizeDump = document.documentElement.style.width;
     textDump = pdfBtn.innerHTML;
-    let optimalW = 840;
+    let optimalW = 900;
     document.documentElement.style.width = optimalW + "px";
     pdfBtn.style.visibility = "hidden";
     linkBtn.style.display = "block";
