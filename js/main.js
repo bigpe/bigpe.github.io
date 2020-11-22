@@ -16,17 +16,20 @@ function loadFReviews() {
                 let revBlock = document.createElement("div");
                 revBlock.setAttribute("class", "accordion revealator-slideright revealator-partially-above revealator-once revealator-delay" + d++);
                 let revTitle = document.createElement("div");
-                revTitle.setAttribute("class", "card-header bg-light text-dark shadow-sm rounded-0 font-weight-bold");
-                revTitle.innerHTML = `<a href='${projectURL}' target='_blank'>${projectName}</a> 
+                revTitle.setAttribute("class", "card-header pl-4 bg-light text-dark shadow-sm rounded-0 font-weight-bold");
+                revTitle.innerHTML = `
+                    <button class='btn btn-link font-weight-bold' type='button' data-toggle='collapse' data-target='#spoiler-${r}'>
+                        ${projectName} <sup><i class="fas fa-sort-down"></i></sup>
+                    </button>
                     ${rating} <i class='fas fa-star text-warning'></i>
                     <span class='text-success'>${paid}${currency}</span>
-                    <button class='btn btn-link' type='button' data-toggle='collapse' data-target='#spoiler-${r}'>
-                        <i class="fas fa-sort-down"></i>
-                    </button>`;
+                    <a href='${projectURL}' target='_blank'>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>`;
                 let revBody = document.createElement("div");
-                revBody.setAttribute("class", "collapse border-bottom card-body bg-light small text-secondary font-weight-bold");
+                revBody.setAttribute("class", "collapse border-bottom bg-light small text-secondary font-weight-bold");
                 revBody.setAttribute("id", `spoiler-${r}`);
-                revBody.innerHTML = description;
+                revBody.innerHTML = `<div class="card-body">${description}</div>`;
                 revBlock.append(revTitle, revBody);
                 leBlock.append(revBlock);
             }

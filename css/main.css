@@ -61,3 +61,10 @@ html, body{
 .ghBlock{
     z-index: 1;
 }
+
+a{
+    text-decoration: none !important;
+}
+svg{
+    min-width: 25px;
+}
