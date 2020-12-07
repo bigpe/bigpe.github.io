@@ -18,6 +18,7 @@ $(document).ready(function (){
 		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 	});
 	bsBreakpoints.init();
+	Revealator.refresh();
 })
 $(window).on('resize', function () {
 	bsBreakpoints.init();
