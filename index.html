@@ -3,212 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CV</title>
-    <link rel="stylesheet" href="css/fm.revealator.jquery.css">
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/fm.revealator.jquery.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
-    <script src="js/jQuery.js"></script>
+    <script src="js/references/jquery-3.4.1.min.js"></script>
+    <script src="js/references/breakpoints.js"></script>
+    <script src="js/references/fm.revealator.jquery.js"></script>
     <script src="js/main.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174990845-1"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+        lazyLoadScripts([
+            "js/references/all.js",
+            "js/references/bootstrap.js"
+        ]);
+        lazyLoadStyles([
+            "css/references/bootstrap.css",
+            "css/references/fm.revealator.jquery.css"
+        ])
+    </script>
 </head>
-<script>
-    Revealator.effects_padding = '0';
-    loadFReviews();
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-174990845-1');
-</script>
 <body>
-<div class="mainBlock bg-white px-0 min-vh-100 mt-0 mb-5">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-md-2 mx-0">
-        <div class="leftBlock bg-white col col-auto px-0 mx-0 border-right border-light">
-            <div class="topMenu">
-                <div class="ghBlock revealator-fade revealator-once revealator-delay1 position-absolute">
-                    <div class="angleBlock"></div>
-                    <a href="https://github.com/bigpe">
-                <span class="text-light">
-                    <i class="fab fa-github"></i>
-                </span>
-                    </a>
-                </div>
-                <div class="pdfBtn text-light revealator-fade revealator-once revealator-delay4" onclick="pdfDump()">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-                <a class="linkBtn" href="https://bigpe.github.io/" target="_blank">
-                    <i class="fas fa-globe-americas"></i>
-                </a>
-            </div>
-            <div class="leftUpBlock jumbotron text-center bg-dark text-light rounded-0 py-4 my-0 revealator-zoomout revealator-load">
-                <img class="shadow-lg photo m-auto revealator-load revealator-slideright">
-                <h1 class="px-2 d-flex justify-content-center revealator-load revealator-fade">Alexandr Sokolov</h1>
-                <p class="my-0 small revealator-zoomout px-2 d-flex justify-content-center revealator-load revealator-fade text-warning">Full Stack Web Developer</p>
-                <div class="row row-cols-1 d-flex justify-content-center">
-                    <div class="col col-auto">
-                        <div class="revealator-once revealator-delay1 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup">
-                            <i class="fas fa-house-user mr-2"></i>Russia, Moscow
-                        </div>
-                        <div class="revealator-once revealator-delay2 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup">
-                            <i class="fas fa-birthday-cake mr-2"></i>12 Feb. 1996
-                        </div>
-                    </div>
-                    <div class="col col-auto">
-                        <div class="revealator-once revealator-delay3 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup">
-                            <i class="fab fa-telegram-plane mr-2"></i><a href="https://t.me/bigpebro" target="_blank">@bigpebro</a>
-                        </div>
-                        <div class="revealator-once revealator-delay4 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup revealator-fade">
-                            <i class="fas fa-envelope mr-2"></i><a href="mailto:bigpewm@gmail.com?subject=About Cooperation" target="_blank">bigpewm@gmail.com</a>
-                        </div>
-                        <div class="revealator-once revealator-delay5 d-inline-flex p-2 text-nowrap revealator-load revealator-slideup revealator-fade">
-                            <i class="fas fa-phone-alt mr-2"></i><a href="tel:+79990898228">+79990898228</a>
-                        </div>
-                    </div>
+<section id="loadScreen" class="bg-dark">
+    <div class="spinner">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+</section>
+<div id="cv-app" class="bg-dark">
+    <div class="container-fluid px-0">
+        <div class="row mx-0">
+            <div class="col px-0">
+                <div class="position-fixed w-50 Info">
+                    <div id="Info" class="loadBlock"></div>
+                    <div id="Languages" class="loadBlock"></div>
                 </div>
             </div>
-            <div class="leftBottomBlock py-3 text-center jumbotron bg-white rounded-0 my-0 pt-2 pb-0 text-dark revealator-load">
-                <div class="row justify-content-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
-                    <div class="revealator-once col col-auto revealator-zoomin revealator-delay4">
-                        <div class="revealator-once revealator-zoomout revealator-delay4">
-                            <h3 class="font-weight-bold py-0">Languages</h3>
-                            <h5 class="pb-1 my-0">Russian <span class="text-dark font-weight-bold">Native</span></h5>
-                            <span class="pb-2 d-table m-auto text-warning text-nowrap">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                        </div>
-                        <div class="revealator-once revealator-zoomout revealator-delay5">
-                            <h5 class="pb-1 my-0">English <span class="text-dark font-weight-bold">B1</span></h5>
-                            <span class="pb-2 d-table m-auto text-warning text-nowrap">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="revealator-once skills col col-auto revealator-zoomin revealator-delay4">
-                        <h3 class="font-weight-bold py-0">Experience</h3>
-                        <div class="skillsIcons">
-                            <div class="row row-cols-1 justify-content-center">
-                                <div class="revealator-once col col-auto revealator-zoomout revealator-delay4">
-                                    <i class="fab fa-js-square text-dark"></i>
-                                    <i class="fab fa-node-js text-dark"></i>
-                                    <i class="fab fa-react text-dark"></i>
-                                    <i class="fab fa-vuejs text-dark"></i>
-                                    <i class="fab fa-github"></i>
-                                </div>
-                            </div>
-                            <div class="row row-cols-1 justify-content-center">
-                                <div class="revealator-once col col-auto revealator-zoomout revealator-delay5">
-                                    <i class="fab fa-python text-dark"></i>
-                                    <i class="fab fa-php text-dark"></i>
-                                    <i class="fab fa-css3-alt text-dark"></i>
-                                    <i class="fab fa-html5 text-dark"></i>
-                                    <i class="fab fa-docker text-dark"></i>
-                                </div>
-                            </div>
-                            <div class="row row-cols-1 justify-content-center">
-                                <div class="revealator-once col col-auto revealator-zoomout revealator-delay6">
-                                    <i class="fab fa-java text-dark"></i>
-                                    <i class="fab fa-bootstrap text-dark"></i>
-                                    <i class="fas fa-copyright text-dark"></i>
-                                    <i class="fas fa-database text-dark"></i>
-                                    <i class="fab fa-wordpress text-dark"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="latestExperience" class="d-none text-left mt-2 shadow-lg revealator-zoomin revealator-load revealator-delay10">
-                    <div class="card-header bg-dark text-light rounded-top"><i class="fas fa-handshake"></i> Latest experience <span class="small text-secondary">Click to see details</span></div>
-                    <div class="card-header bg-light d-flex">
-                        <a href="https://www.freelancer.com.ru/u/bigpebro" target="_blank"><span class="font-weight-bold">Freelancer.com</span></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="rightBlock w-100 col col-auto px-0 text-dark revealator-slideleft revealator-load revealator-delay2">
-            <div class="my-0 py-3 jumbotron bg-white text-light rounded-0">
-                <div id="about" class="shadow-lg revealator-zoomout revealator-delay3 text-light text-left revealator-load overflow-hidden">
-                    <div class="card-header bg-dark rounded-top"><i class="fas fa-user mr-2"></i>Skills <span class="small text-secondary">Five-star scale</span></div>
-                    <div class="revealator-once card-header font-weight-bold text-dark revealator-slideleft revealator-delay5"><i class="fas fa-check"></i> Experience 2 years</div>
-                    <div class="revealator-once card-header font-weight-bold text-dark revealator-slideleft revealator-delay6"><i class="fas fa-check"></i> Fast learning</div>
-                    <div class="card-header bg-light text-dark font-weight-bold revealator-slideleft revealator-delay7">
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i> 5
-                        </span>
-                        <i class="fab fa-python text-dark"></i> <span>Python</span>
-                    </div>
-                    <div class="card-header bg-light text-dark font-weight-bold revealator-slideleft revealator-delay8">
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i> 4
-                        </span>
-                        <i class="fab fa-js-square text-dark"></i> <span>JavaScript</span>
-                    </div>
-                    <div class="card-header bg-light text-dark font-weight-bold revealator-slideleft revealator-delay9">
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i> 4
-                        </span>
-                        <i class="fab fa-php text-dark"></i> <span>PHP</span>
-                    </div>
-                    <div class="card-header bg-light text-dark font-weight-bold revealator-slideleft revealator-delay10">
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i> 3
-                        </span>
-                        <i class="fas fa-copyright text-dark"></i> <span>C++</span>
-                    </div>
-                    <div class="card-header bg-light text-dark font-weight-bold revealator-slideleft revealator-delay11">
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i> 3
-                        </span>
-                        <i class="fas fa-database text-dark"></i> <span>Databases</span>
-                    </div>
-                </div>
-                <div id="education" class="revealator-once mt-3 shadow-lg revealator-fade revealator-delay5">
-                    <div class="card-header bg-dark rounded-top"><i class="fas fa-graduation-cap mr-2"></i>Education</div>
-                    <div class="revealator-once card-header bg-white d-flex revealator-slideleft revealator-delay5">
-                        <a href="https://21-school.ru/"><span class="font-weight-bold">School 21 (Ecole 42)</span></a>
-                    </div>
-                    <div class="revealator-once card-body text-secondary revealator-slideleft revealator-delay6">
-                        Apr. 2019 - Present Day
-                    </div>
-                </div>
-                <div id="hobbies" class="revealator-once mt-3 shadow-lg revealator-fade revealator-delay3 overflow-hidden">
-                    <div class="card-header bg-dark rounded-top"><i class="fas fa-dice mr-2"></i>Hobbies</div>
-                    <div class="revealator-once card-header bg-light text-dark revealator-zoomout revealator-delay5">
-                        <i class="fas fa-gamepad"></i> Videogames
-                    </div>
-                    <div class="revealator-once card-header bg-light text-dark revealator-zoomout revealator-delay6">
-                        <i class="fas fa-music"></i> Music
-                    </div>
-                    <div class="revealator-once card-header bg-light text-dark revealator-zoomout revealator-delay7">
-                        <i class="fas fa-book"></i> Books
-                    </div>
-                    <div class="revealator-once card-header bg-light text-dark revealator-zoomout revealator-delay8">
-                        <i class="fas fa-laptop-code"></i> Development
-                    </div>
-                </div>
-                <div id="addition" class="revealator-once shadow-lg revealator-fade revealator-delay5">
-                    <div class="card-header bg-dark rounded-top mt-3"><i class="fas fa-info-circle"></i> Addition</div>
-                    <div class="revealator-once card-body small text-secondary revealator-slideleft revealator-delay6">
-                        <span class="d-block">Development is my job.</span>
-                        <span class="d-block">Development is my hobby.</span>
-                        <span class="d-block">If you have cool projects, I am with you!</span>
-                        <span class="d-block">Thank you for visiting, maybe <span class="text-nowrap">see you soon :)</span></span>
-                    </div>
-                </div>
+            <div class="col">
+                <div id="Skills" class="loadBlock my-2"></div>
+                <div id="Awards" class="loadBlock my-2"></div>
+                <div id="Education" class="loadBlock my-2"></div>
+                <div id="Developing" class="loadBlock my-2"></div>
+                <div id="Reviews" class="loadBlock my-2"></div>
+                <div id="Hobbies" class="loadBlock my-2"></div>
+                <div id="Additions" class="loadBlock my-2"></div>
             </div>
         </div>
     </div>
