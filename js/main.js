@@ -10,9 +10,9 @@ $(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
 	lazyLoadBlocks();
 	for (let i in loadStyles)
-		sendAjax(`${localHost}/${loadStyles[i]}`, 'head', loadStyle);
+		sendAjax(`${localHost}${loadStyles[i]}`, 'head', loadStyle);
 	for (let i in loadScripts)
-		sendAjax(`${localHost}/${loadScripts[i]}`, 'head', loadScript);
+		sendAjax(`${localHost}${loadScripts[i]}`, 'head', loadScript);
 	loadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
 		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
