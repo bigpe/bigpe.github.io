@@ -33,7 +33,8 @@ function saveHashes(hashes){
 function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
-		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
+		if (!(localStorage.getItem(blockId)))
+			sendAjax(`${remoteHost}/getBlock/${blockId}?withHash=True`, blockId, loadBlock);
 	});
 }
 function loadScripts(){
@@ -76,6 +77,7 @@ function loadStyle(content, block){
 	saveLoading();
 }
 function loadBlock(content, blockId){
+	content = JSON.parse(content)['content'];
 	$(`#${blockId}`).html(content);
 	saveLoading();
 }
