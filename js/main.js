@@ -22,6 +22,11 @@ $(window).on('resize', function () {
 })
 function loadHashes(){
 	waitToLoad += 1;
+	sendAjax(`${remoteHost}/getBlocksHashes`, false, saveHashes);
+}
+function saveHashes(hashes){
+	console.log(hashes);
+	saveLoading();
 }
 function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
