@@ -1,4 +1,4 @@
-/js/* -linguist-detectable
+/js/references/ -linguist-detectable
 /js/main.js linguist-detectable
-/css/* -linguist-detectable
+/css/references/ -linguist-detectable
 /css/main.css linguist-detectable
