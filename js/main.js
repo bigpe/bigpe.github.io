@@ -25,7 +25,9 @@ function loadHashes(){
 	sendAjax(`${remoteHost}/getBlocksHashes`, false, saveHashes);
 }
 function saveHashes(hashes){
-	console.log(hashes);
+	hashes = JSON.parse(hashes);
+	for (let h in hashes)
+		localStorage.setItem(h, hashes[h]);
 	saveLoading();
 }
 function loadBlocks(){
