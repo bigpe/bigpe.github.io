@@ -3,6 +3,7 @@ let localHost = location.origin;
 let toLoadScripts = null;
 let toLoadBlocks = null;
 let toLoadStyles = null;
+let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
@@ -26,14 +27,18 @@ function loadHashes(){
 }
 function saveHashes(hashes){
 	hashes = JSON.parse(hashes);
-	for (let h in hashes)
-		localStorage.setItem(h, hashes[h]);
+	for (let h in hashes) {
+		if (!(localStorage.getItem(h) === hashes[h])) {
+			localStorage.setItem(h, hashes[h]);
+			differentBlocks.push(h);
+		}
+	}
 	saveLoading();
 }
 function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
-		if (!(localStorage.getItem(blockId)))
+		if (blockId in differentBlocks)
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 	});
 }
