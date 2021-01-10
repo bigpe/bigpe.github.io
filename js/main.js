@@ -87,6 +87,7 @@ function loadStyle(content, block){
 }
 function loadBlock(content, blockId){
 	$(`#${blockId}`).html(content);
+	console.log(content);
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
