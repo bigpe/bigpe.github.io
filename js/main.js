@@ -38,7 +38,7 @@ function saveHashes(hashes){
 function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
-		if (blockId in differentBlocks)
+		if (differentBlocks.includes(blockId))
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 		else{
 			let content = localStorage.getItem(`${blockId}_Content`);
@@ -87,7 +87,6 @@ function loadStyle(content, block){
 }
 function loadBlock(content, blockId){
 	$(`#${blockId}`).html(content);
-	console.log(content);
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
