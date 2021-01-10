@@ -13,7 +13,6 @@ $(document).ready(function (){
 	lazyLoadBlocks();
 	loadStyles();
 	loadScripts();
-	loadBlocks();
 	bsBreakpoints.init();
 	Revealator.refresh();
 })
@@ -33,6 +32,7 @@ function saveHashes(hashes){
 			differentBlocks.push(h);
 		}
 	}
+	loadBlocks();
 	saveLoading();
 }
 function loadBlocks(){
