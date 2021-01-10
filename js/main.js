@@ -1,22 +1,18 @@
 let remoteHost = 'https://cv-constructor-django.herokuapp.com';
 let localHost = location.origin;
-let loadScripts = null;
-let loadBlocks = null;
-let loadStyles = null;
+let toLoadScripts = null;
+let toLoadBlocks = null;
+let toLoadStyles = null;
 let waitToLoad = 0;
 let loaded = 0;
 
 $(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
+	loadHashes();
 	lazyLoadBlocks();
-	for (let i in loadStyles)
-		sendAjax(`${localHost}${loadStyles[i]}`, 'head', loadStyle);
-	for (let i in loadScripts)
-		sendAjax(`${localHost}${loadScripts[i]}`, 'head', loadScript);
-	loadBlocks.each(function (i, block) {
-		let blockId = $(block).attr('id');
-		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
-	});
+	loadStyles();
+	loadScripts();
+	loadBlocks();
 	bsBreakpoints.init();
 	Revealator.refresh();
 })
@@ -24,16 +20,33 @@ $(window).on('resize', function () {
 	bsBreakpoints.init();
 	adaptBlock();
 })
+function loadHashes(){
+	waitToLoad += 1;
+}
+function loadBlocks(){
+	toLoadBlocks.each(function (i, block) {
+		let blockId = $(block).attr('id');
+		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
+	});
+}
+function loadScripts(){
+	for (let i in toLoadScripts)
+		sendAjax(`${localHost}${toLoadScripts[i]}`, 'head', loadScript);
+}
+function loadStyles(){
+	for (let i in toLoadStyles)
+		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
+}
 function lazyLoadBlocks(){
-	loadBlocks = $('.loadBlock');
-	waitToLoad += loadBlocks.length;
+	toLoadBlocks = $('.loadBlock');
+	waitToLoad += toLoadBlocks.length;
 }
 function lazyLoadStyles(stylesPathArr){
-	loadStyles = stylesPathArr;
+	toLoadStyles = stylesPathArr;
 	waitToLoad += stylesPathArr.length;
 }
 function lazyLoadScripts(scriptsPathArr){
-	loadScripts = scriptsPathArr;
+	toLoadScripts = scriptsPathArr;
 	waitToLoad += scriptsPathArr.length;
 }
 function adaptBlock(){
