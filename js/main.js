@@ -40,6 +40,10 @@ function loadBlocks(){
 		let blockId = $(block).attr('id');
 		if (blockId in differentBlocks)
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
+		else{
+			let content = localStorage.getItem(`${blockId}_Content`);
+			loadBlock(content, blockId);
+		}
 	});
 }
 function loadScripts(){
@@ -83,6 +87,7 @@ function loadStyle(content, block){
 }
 function loadBlock(content, blockId){
 	$(`#${blockId}`).html(content);
+	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
 function saveLoading(){
