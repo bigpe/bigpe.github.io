@@ -27,7 +27,7 @@ function loadHashes(){
 function saveHashes(hashes){
 	hashes = JSON.parse(hashes);
 	for (let h in hashes) {
-		if (!(localStorage.getItem(h) === hashes[h])) {
+		if (localStorage.getItem(h) !== hashes[h]) {
 			localStorage.setItem(h, hashes[h]);
 			differentBlocks.push(h);
 		}
