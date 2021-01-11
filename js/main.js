@@ -23,7 +23,7 @@ $(window).on('resize', function () {
 function changeLoadingBar(text){
 	setTimeout(function () {
 		$('#loadingBar').text(text);
-	}, 500);
+	}, 100);
 }
 function loadHashes(){
 	waitToLoad += 1;
