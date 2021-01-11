@@ -43,11 +43,7 @@ function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
 		let content = localStorage.getItem(`${blockId}_Content`);
-		if (differentBlocks.includes(blockId) || content === 'null' || !content)
-			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
-		else{
-			loadBlock(content, blockId, true);
-		}
+		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 	});
 }
 function loadScripts(){
@@ -106,10 +102,8 @@ function checkLoading(){
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut('slow', function () {
 			$('#cv-app').fadeIn('slow', function (){
+				Revealator.refresh();
 				adaptBlock();
-				setTimeout(function () {
-					Revealator.refresh();
-				}, 1000);
 			});
 		});
 	}
