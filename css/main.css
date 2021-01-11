@@ -203,6 +203,3 @@ div.spinner i:nth-child(8) {
 .experienceIcons svg{
     font-size: 1.3rem;
 }
-.overlay{
-    background: url('./overlay.png');
-}
