@@ -7,7 +7,7 @@ let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
-$(document).ready(function (){
+$(window).load(function (){
 	$('#cv-app').fadeOut('fast');
 	loadHashes();
 	lazyLoadBlocks();
@@ -95,7 +95,6 @@ function loadBlock(content, blockId, cache=false){
 	if (!cache)
 		changeLoadingBar(`Loading ${blockId}`);
 	$(`#${blockId}`).html(content);
-	adaptBlock();
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
