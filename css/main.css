@@ -1,3 +1,6 @@
+#cv-app{
+    overflow-x: hidden !important;
+}
 svg{
     min-width: 25px;
 }
