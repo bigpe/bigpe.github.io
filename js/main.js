@@ -7,7 +7,6 @@ let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
-$('.AdditionBlock').addClass('d-none');
 
 $(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
@@ -51,7 +50,6 @@ function loadBlocks(){
 			loadBlock(content, blockId, true);
 		}
 	});
-	$('.AdditionBlock').removeClass('d-none');
 }
 function loadScripts(){
 	changeLoadingBar(`Loading Static Scripts`);
@@ -97,7 +95,9 @@ function loadStyle(content, block){
 function loadBlock(content, blockId, cache=false){
 	if (!cache)
 		changeLoadingBar(`Loading ${blockId}`);
-	$(`#${blockId}`).html(content);
+	setTimeout(function () {
+		$(`#${blockId}`).html(content);
+	}, 500);
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
