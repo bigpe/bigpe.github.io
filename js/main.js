@@ -38,10 +38,10 @@ function saveHashes(hashes){
 function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
-		if (differentBlocks.includes(blockId))
+		let content = localStorage.getItem(`${blockId}_Content`);
+		if (differentBlocks.includes(blockId) || content == 'null')
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 		else{
-			let content = localStorage.getItem(`${blockId}_Content`);
 			loadBlock(content, blockId);
 		}
 	});
