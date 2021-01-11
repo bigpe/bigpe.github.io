@@ -7,6 +7,8 @@ let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
+adaptBlock();
+
 $(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
 	loadHashes();
@@ -14,10 +16,6 @@ $(document).ready(function (){
 	loadStyles();
 	loadScripts();
 	bsBreakpoints.init();
-	Revealator.refresh();
-})
-$(window).load(function () {
-	adaptBlock();
 	Revealator.refresh();
 })
 $(window).on('resize', function () {
