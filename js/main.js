@@ -48,7 +48,9 @@ function loadBlocks(){
 		else{
 			loadBlock(content, blockId);
 		}
-		changeLoadingBar(`Loading ${blockId}`);
+		setTimeout(function () {
+			changeLoadingBar(`Loading ${blockId}`);
+		}, 500);
 	});
 }
 function loadScripts(){
