@@ -105,9 +105,9 @@ function saveLoading(){
 	checkLoading();
 }
 function checkLoading(){
+	adaptBlock();
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut('slow', function () {
-			adaptBlock();
 			$('#cv-app').fadeIn('slow', function (){
 				adaptBlock();
 				Revealator.refresh();
