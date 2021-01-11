@@ -45,12 +45,13 @@ function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
 		let content = localStorage.getItem(`${blockId}_Content`);
-		if (differentBlocks.includes(blockId) || content === 'null' || !content)
+		if (differentBlocks.includes(blockId) || content === 'null' || !content) {
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
+			changeLoadingBar(`Loading ${blockId}`);
+		}
 		else{
 			loadBlock(content, blockId);
 		}
-		changeLoadingBar(`Loading ${blockId}`);
 	});
 }
 function loadScripts(){
