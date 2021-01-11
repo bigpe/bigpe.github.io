@@ -105,9 +105,9 @@ function saveLoading(){
 function checkLoading(){
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut('slow', function () {
-			adaptBlock();
 			$('#cv-app').fadeIn('slow', function (){
 				Revealator.refresh();
+				adaptBlock();
 			});
 		});
 	}
