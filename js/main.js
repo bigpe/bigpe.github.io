@@ -21,9 +21,7 @@ $(window).on('resize', function () {
 	adaptBlock();
 })
 function changeLoadingBar(text){
-	setTimeout(function () {
-		$('#loadingBar').text(text);
-	}, 100);
+	$('#loadingBar').text(text);
 }
 function loadHashes(){
 	waitToLoad += 1;
