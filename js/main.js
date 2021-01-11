@@ -106,10 +106,10 @@ function checkLoading(){
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut('slow', function () {
 			$('#cv-app').fadeIn('slow', function (){
+				adaptBlock();
 				setTimeout(function () {
-					adaptBlock();
 					Revealator.refresh();
-				}, 500);
+				}, 1000);
 			});
 		});
 	}
