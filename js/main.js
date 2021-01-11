@@ -20,6 +20,9 @@ $(window).on('resize', function () {
 	bsBreakpoints.init();
 	adaptBlock();
 })
+function changeLoadingBar(text){
+	$('#loadingBar').text(text);
+}
 function loadHashes(){
 	waitToLoad += 1;
 	sendAjax(`${remoteHost}/getBlocksHashes`, false, saveHashes);
@@ -32,6 +35,7 @@ function saveHashes(hashes){
 			differentBlocks.push(h);
 		}
 	}
+	changeLoadingBar('Loading hashes');
 	loadBlocks();
 	saveLoading();
 }
@@ -44,6 +48,7 @@ function loadBlocks(){
 		else{
 			loadBlock(content, blockId);
 		}
+		changeLoadingBar(`Loading ${blockId}`);
 	});
 }
 function loadScripts(){
