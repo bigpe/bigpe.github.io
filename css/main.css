@@ -200,3 +200,6 @@ div.spinner i:nth-child(8) {
     width: 100vw;
     display: flex;
 }
+.experienceIcons svg{
+    font-size: 1.5rem;
+}
