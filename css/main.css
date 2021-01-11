@@ -219,3 +219,6 @@ div.spinner i:nth-child(8) {
 #loadingBarHeroku{
     margin-top: 10px;
 }
+#loadingBar, #loadingBarHeroku{
+    color: #353A40;
+}
