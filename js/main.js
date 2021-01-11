@@ -36,7 +36,7 @@ function saveHashes(hashes){
 			differentBlocks.push(h);
 		}
 	}
-	$('#loadingBarHeroku').remove();
+	$('#loadingBarHeroku').fadeOut('slow');
 	changeLoadingBar('Loading Hashes');
 	loadBlocks();
 	saveLoading();
