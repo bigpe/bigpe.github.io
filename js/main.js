@@ -39,7 +39,7 @@ function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
 		let content = localStorage.getItem(`${blockId}_Content`);
-		if (differentBlocks.includes(blockId) || content == 'null')
+		if (differentBlocks.includes(blockId) || content === 'null' || !content)
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 		else{
 			loadBlock(content, blockId);
