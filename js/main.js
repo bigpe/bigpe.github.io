@@ -49,7 +49,6 @@ function loadBlocks(){
 			loadBlock(content, blockId, true);
 		}
 	});
-	adaptBlock();
 }
 function loadScripts(){
 	changeLoadingBar(`Loading Static Scripts`);
@@ -106,8 +105,8 @@ function saveLoading(){
 function checkLoading(){
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut('slow', function () {
+			adaptBlock();
 			$('#cv-app').fadeIn('slow', function (){
-				adaptBlock();
 				Revealator.refresh();
 			});
 		});
