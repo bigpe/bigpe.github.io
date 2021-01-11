@@ -7,7 +7,7 @@ let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
-$('.AdditionBlock').fadeOut('fast');
+$('.AdditionBlock').addClass('d-none');
 
 $(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
@@ -51,7 +51,7 @@ function loadBlocks(){
 			loadBlock(content, blockId, true);
 		}
 	});
-	$('.AdditionBlock').fadeIn('fast');
+	$('.AdditionBlock').removeClass('d-none');
 }
 function loadScripts(){
 	changeLoadingBar(`Loading Static Scripts`);
