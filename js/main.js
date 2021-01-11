@@ -49,6 +49,7 @@ function loadBlocks(){
 			loadBlock(content, blockId, true);
 		}
 	});
+	adaptBlock();
 }
 function loadScripts(){
 	changeLoadingBar(`Loading Static Scripts`);
