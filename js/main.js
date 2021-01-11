@@ -17,9 +17,8 @@ $(document).ready(function (){
 	Revealator.refresh();
 })
 $(window).load(function () {
-	bsBreakpoints.init();
-	Revealator.refresh();
 	adaptBlock();
+	Revealator.refresh();
 })
 $(window).on('resize', function () {
 	bsBreakpoints.init();
