@@ -93,12 +93,13 @@ function loadStyle(content, block){
 	saveLoading();
 }
 function loadBlock(content, blockId, cache=false){
-	if (!cache)
+	if (!cache){
 		changeLoadingBar(`Loading ${blockId}`);
+		localStorage.setItem(`${blockId}_Content`, content);
+	}
 	setTimeout(function () {
 		$(`#${blockId}`).html(content);
 	}, 500);
-	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
 function saveLoading(){
