@@ -2,7 +2,7 @@ svg{
     min-width: 25px;
 }
 html{
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 body {
     margin: 0;
