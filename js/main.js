@@ -57,7 +57,7 @@ function loadScripts(){
 		sendAjax(`${localHost}${toLoadScripts[i]}`, 'head', loadScript);
 }
 function loadStyles(){
-	changeLoadingBar(`Loading Static Styles`);
+	// changeLoadingBar(`Loading Static Styles`);
 	for (let i in toLoadStyles)
 		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
 }
