@@ -7,6 +7,8 @@ let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
+$('.AdditionBlock').fadeOut('fast');
+
 $(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
 	loadHashes();
@@ -15,7 +17,6 @@ $(document).ready(function (){
 	loadScripts();
 	bsBreakpoints.init();
 	Revealator.refresh();
-	$('.AdditionBlock').fadeOut('fast');
 })
 $(window).on('resize', function () {
 	bsBreakpoints.init();
@@ -50,6 +51,7 @@ function loadBlocks(){
 			loadBlock(content, blockId, true);
 		}
 	});
+	$('.AdditionBlock').fadeIn('fast');
 }
 function loadScripts(){
 	changeLoadingBar(`Loading Static Scripts`);
