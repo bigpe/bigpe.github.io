@@ -48,7 +48,7 @@ function loadBlocks(){
 		if (differentBlocks.includes(blockId) || content === 'null' || !content)
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
 		else{
-			loadBlock(content, blockId);
+			loadBlock(content, blockId, true);
 		}
 	});
 }
@@ -93,8 +93,9 @@ function loadStyle(content, block){
 	$(block).append(`<style>${content}</style>`);
 	saveLoading();
 }
-function loadBlock(content, blockId){
-	changeLoadingBar(`Loading ${blockId}`);
+function loadBlock(content, blockId, cache=false){
+	if (!cache)
+		changeLoadingBar(`Loading ${blockId}`);
 	$(`#${blockId}`).html(content);
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
