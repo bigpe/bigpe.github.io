@@ -21,7 +21,9 @@ $(window).on('resize', function () {
 	adaptBlock();
 })
 function changeLoadingBar(text){
-	$('#loadingBar').text(text);
+	setTimeout(function () {
+		$('#loadingBar').text(text);
+	}, 500);
 }
 function loadHashes(){
 	waitToLoad += 1;
@@ -48,9 +50,7 @@ function loadBlocks(){
 		else{
 			loadBlock(content, blockId);
 		}
-		setTimeout(function () {
-			changeLoadingBar(`Loading ${blockId}`);
-		}, 500);
+		changeLoadingBar(`Loading ${blockId}`);
 	});
 }
 function loadScripts(){
