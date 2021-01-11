@@ -45,20 +45,20 @@ function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
 		let content = localStorage.getItem(`${blockId}_Content`);
-		if (differentBlocks.includes(blockId) || content === 'null' || !content) {
+		if (differentBlocks.includes(blockId) || content === 'null' || !content)
 			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
-			changeLoadingBar(`Loading ${blockId}`);
-		}
 		else{
 			loadBlock(content, blockId);
 		}
 	});
 }
 function loadScripts(){
+	changeLoadingBar(`Loading Static Scripts`);
 	for (let i in toLoadScripts)
 		sendAjax(`${localHost}${toLoadScripts[i]}`, 'head', loadScript);
 }
 function loadStyles(){
+	changeLoadingBar(`Loading Static Styles`);
 	for (let i in toLoadStyles)
 		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
 }
@@ -94,6 +94,7 @@ function loadStyle(content, block){
 	saveLoading();
 }
 function loadBlock(content, blockId){
+	changeLoadingBar(`Loading ${blockId}`);
 	$(`#${blockId}`).html(content);
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
