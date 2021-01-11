@@ -43,7 +43,11 @@ function loadBlocks(){
 	toLoadBlocks.each(function (i, block) {
 		let blockId = $(block).attr('id');
 		let content = localStorage.getItem(`${blockId}_Content`);
-		sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
+		if (differentBlocks.includes(blockId) || content === 'null' || !content)
+			sendAjax(`${remoteHost}/getBlock/${blockId}`, blockId, loadBlock);
+		else{
+			loadBlock(content, blockId, true);
+		}
 	});
 }
 function loadScripts(){
@@ -91,6 +95,7 @@ function loadBlock(content, blockId, cache=false){
 	if (!cache)
 		changeLoadingBar(`Loading ${blockId}`);
 	$(`#${blockId}`).html(content);
+	adaptBlock();
 	localStorage.setItem(`${blockId}_Content`, content);
 	saveLoading();
 }
@@ -102,8 +107,8 @@ function checkLoading(){
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut('slow', function () {
 			$('#cv-app').fadeIn('slow', function (){
-				Revealator.refresh();
 				adaptBlock();
+				Revealator.refresh();
 			});
 		});
 	}
