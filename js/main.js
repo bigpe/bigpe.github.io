@@ -37,7 +37,7 @@ function saveHashes(hashes){
 			differentBlocks.push(h);
 		}
 	}
-	changeLoadingBar('Loading hashes');
+	changeLoadingBar('Loading Hashes');
 	loadBlocks();
 	saveLoading();
 }
