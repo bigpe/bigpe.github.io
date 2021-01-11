@@ -7,7 +7,7 @@ let differentBlocks = [];
 let waitToLoad = 0;
 let loaded = 0;
 
-$(window).load(function (){
+$(document).ready(function (){
 	$('#cv-app').fadeOut('fast');
 	loadHashes();
 	lazyLoadBlocks();
