@@ -61,6 +61,8 @@ function loadStyles(){
 	changeLoadingBar(`Loading Static Styles`);
 	for (let i in toLoadStyles)
 		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
+	$('#loadingBarHeroku').fadeIn('slow');
+	$('#frogAnim').fadeIn('slow');
 }
 function lazyLoadBlocks(){
 	toLoadBlocks = $('.loadBlock');
