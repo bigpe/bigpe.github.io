@@ -67,7 +67,7 @@ function herokuLoadBarShow(){
 	setTimeout(() => {
 		$('#loadingBarHeroku').fadeIn('fast');
 		$('#frogAnim').fadeIn('fast');
-	}, 100)
+	}, 3000)
 }
 function lazyLoadBlocks(){
 	toLoadBlocks = $('.loadBlock');
@@ -107,7 +107,7 @@ function loadBlock(content, blockId, cache=false){
 	}
 	setTimeout(function () {
 		$(`#${blockId}`).html(content);
-	}, 600);
+	}, 700);
 	saveLoading();
 }
 function saveLoading(){
