@@ -66,9 +66,7 @@ function loadStyles(){
 function herokuLoadBarShow(){
 	setTimeout(() => {
 		$('#loadingBarHeroku').fadeIn('fast');
-		setTimeout(() => {
-			$('#frogAnim').fadeIn('fast');
-		}, 100)
+		$('#frogAnim').fadeIn('fast');
 	}, 3000)
 }
 function lazyLoadBlocks(){
