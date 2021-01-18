@@ -61,8 +61,15 @@ function loadStyles(){
 	changeLoadingBar(`Loading Static Styles`);
 	for (let i in toLoadStyles)
 		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
-	$('#loadingBarHeroku').fadeIn('slow');
-	$('#frogAnim').fadeIn('slow');
+	herokuLoadBarShow(); // If Load is Freeze
+}
+function herokuLoadBarShow(){
+	setTimeout(() => {
+		$('#loadingBarHeroku').fadeIn('fast');
+		setTimeout(() => {
+			$('#frogAnim').fadeIn('fast');
+		}, 100)
+	}, 3000)
 }
 function lazyLoadBlocks(){
 	toLoadBlocks = $('.loadBlock');
