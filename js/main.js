@@ -104,9 +104,7 @@ function loadBlock(content, blockId, cache=false){
 		changeLoadingBar(`Loading ${blockId}`);
 		localStorage.setItem(`${blockId}_Content`, content);
 	}
-	setTimeout(function () {
-		$(`#${blockId}`).html(content);
-	}, 700);
+	$(`#${blockId}`).html(content);
 	saveLoading();
 }
 function saveLoading(){
@@ -115,11 +113,10 @@ function saveLoading(){
 }
 function checkLoading(){
 	if (waitToLoad === loaded) {
-		$('#loadScreen').fadeOut('slow', function () {
-			$('#cv-app').fadeIn('slow', function (){
-				adaptBlock();
-				Revealator.refresh();
-			});
+		$('#loadScreen').fadeOut('slow');
+		$('#cv-app').fadeIn('slow', function (){
+			adaptBlock();
+			Revealator.refresh();
 		});
 	}
 }
