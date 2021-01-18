@@ -218,7 +218,12 @@ div.spinner i:nth-child(8) {
 }
 #loadingBarHeroku{
     margin-top: 10px;
+    display: none;
 }
 #loadingBar, #loadingBarHeroku{
     color: #353A40;
+}
+#frogAnim{
+    width: 25px;
+    display: none;
 }
