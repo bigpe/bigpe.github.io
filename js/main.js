@@ -9,7 +9,6 @@ let loaded = 0;
 
 
 $(document).ready(function (){
-	$('#cv-app').fadeOut('fast');
 	loadHashes();
 	lazyLoadBlocks();
 	loadStyles();
@@ -107,7 +106,7 @@ function loadBlock(content, blockId, cache=false){
 	}
 	setTimeout(function () {
 		$(`#${blockId}`).html(content);
-	}, 600);
+	}, 500);
 	saveLoading();
 }
 function saveLoading(){
