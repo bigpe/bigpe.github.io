@@ -107,7 +107,7 @@ function loadBlock(content, blockId, cache=false){
 	}
 	setTimeout(function () {
 		$(`#${blockId}`).html(content);
-	}, 1000);
+	}, 3000);
 	saveLoading();
 }
 function saveLoading(){
