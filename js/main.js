@@ -63,12 +63,12 @@ function loadStyles(){
 		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
 	herokuLoadBarShow(); // If Load is Freeze
 }
-function herokuLoadBarShow(){
-	setTimeout(() => {
-		$('#loadingBarHeroku').fadeIn('fast');
-		$('#frogAnim').fadeIn('fast');
-	}, 3000)
-}
+// function herokuLoadBarShow(){
+// 	setTimeout(() => {
+// 		$('#loadingBarHeroku').fadeIn('fast');
+// 		$('#frogAnim').fadeIn('fast');
+// 	}, 3000)
+// }
 function lazyLoadBlocks(){
 	toLoadBlocks = $('.loadBlock');
 	waitToLoad += toLoadBlocks.length;
@@ -107,7 +107,7 @@ function loadBlock(content, blockId, cache=false){
 	}
 	setTimeout(function () {
 		$(`#${blockId}`).html(content);
-	}, 200);
+	}, 500);
 	saveLoading();
 }
 function saveLoading(){
