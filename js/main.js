@@ -9,12 +9,11 @@ let loaded = 0;
 
 
 $(document).ready(function (){
+	bsBreakpoints.init();
 	loadHashes();
 	lazyLoadBlocks();
 	loadStyles();
 	loadScripts();
-	bsBreakpoints.init();
-	Revealator.refresh();
 })
 $(window).on('resize', function () {
 	bsBreakpoints.init();
@@ -113,11 +112,10 @@ function saveLoading(){
 }
 function checkLoading(){
 	if (waitToLoad === loaded) {
-		$('#loadScreen').fadeOut('slow');
-		$('#cv-app').fadeIn('slow', function (){
-			adaptBlock();
-			Revealator.refresh();
-		});
+		$('#loadScreen').fadeOut(800);
+		$('#cv-app').fadeIn(1000);
+		adaptBlock();
+		Revealator.refresh();
 	}
 }
 function sendAjax(url, blockId, callback=false){
