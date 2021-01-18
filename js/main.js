@@ -61,7 +61,6 @@ function loadStyles(){
 	changeLoadingBar(`Loading Static Styles`);
 	for (let i in toLoadStyles)
 		sendAjax(`${localHost}${toLoadStyles[i]}`, 'head', loadStyle);
-	herokuLoadBarShow(); // If Load is Freeze
 }
 // function herokuLoadBarShow(){
 // 	setTimeout(() => {
