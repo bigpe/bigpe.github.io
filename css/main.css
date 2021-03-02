@@ -228,3 +228,6 @@ div.spinner i:nth-child(8) {
     width: 25px;
     display: none;
 }
+.Info{
+    display: grid;
+}
