@@ -114,6 +114,7 @@ function checkLoading(){
 	if (waitToLoad === loaded) {
 		$('#loadScreen').fadeOut(800);
 		$('#cv-app').fadeIn(1000);
+		bsBreakpoints.init();
 		adaptBlock();
 		Revealator.refresh();
 	}
