@@ -231,3 +231,6 @@ div.spinner i:nth-child(8) {
 .Info{
     display: grid;
 }
+.btn:focus{
+    box-shadow: none !important;
+}
